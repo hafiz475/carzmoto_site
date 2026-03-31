@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import CompanyLogo from './CompanyLogo';
 
 const WA_LINK = 'https://wa.me/918072574682';
 
@@ -18,9 +19,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             {/* Logo */}
             <a href="#" className="inline-block mb-6 group">
-              <img
-                src={`${import.meta.env.BASE_URL}assets/company_logo.png`}
-                alt="CARZ MOTO"
+              <CompanyLogo
                 className="logo-blend h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 style={{ filter: 'brightness(1.2) drop-shadow(0 0 15px rgba(218,165,32,0.3))' }}
               />
@@ -67,7 +66,7 @@ export default function Footer() {
                 <FaMapMarkerAlt className="w-5 h-5 text-brand-gold-light mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-gray-300 font-light leading-relaxed">
                   <span className="text-white font-medium block mb-1">CARZ MOTO Headquarters</span>
-                  123 Automotive Avenue,<br />Anna Nagar, Chennai 600040
+                  No: 37, Kithabath Khan Street<br />Triplicane<br />Chennai - 600005
                 </div>
               </li>
               <li className="flex items-center gap-4">
@@ -84,7 +83,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-4">
                 <FaClock className="w-4 h-4 text-brand-gold-dim flex-shrink-0" />
-                <span className="text-sm text-gray-500 font-light">Mon - Sun: 10:00 AM - 8:00 PM</span>
+                <span className="text-sm text-gray-500 font-light">Mon - Sun: 10:00 AM - 12:00 PM</span>
               </li>
             </ul>
           </div>
