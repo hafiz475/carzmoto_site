@@ -44,7 +44,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-0 group" aria-label="CARZ MOTO Home">
           <img
-            src="/assets/company_logo.png"
+            src={`${import.meta.env.BASE_URL}assets/company_logo.png`}
             alt="CARZ MOTO"
             className="logo-blend h-12 sm:h-14 w-auto object-contain transition-all duration-400 group-hover:scale-105"
             style={{ filter: 'brightness(1.15) contrast(1.1) drop-shadow(0 0 12px rgba(218,165,32,0.4))' }}

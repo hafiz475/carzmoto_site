@@ -19,7 +19,7 @@ export default function Footer() {
             {/* Logo */}
             <a href="#" className="inline-block mb-6 group">
               <img
-                src="/assets/company_logo.png"
+                src={`${import.meta.env.BASE_URL}assets/company_logo.png`}
                 alt="CARZ MOTO"
                 className="logo-blend h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 style={{ filter: 'brightness(1.2) drop-shadow(0 0 15px rgba(218,165,32,0.3))' }}

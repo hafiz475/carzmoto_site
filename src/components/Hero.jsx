@@ -96,7 +96,7 @@ export default function Hero() {
               style={{ background: 'radial-gradient(circle, #DAA520 0%, transparent 60%)', transform: 'scale(1.1)' }}
             />
             <img
-              src="/assets/company_logo.png"
+              src={`${import.meta.env.BASE_URL}assets/company_logo.png`}
               alt="CARZ MOTO"
               className="logo-blend relative z-10 w-full h-auto max-h-[50vh] object-contain drop-shadow-[0_0_25px_rgba(218,165,32,0.4)] animate-logo-entrance"
             />
