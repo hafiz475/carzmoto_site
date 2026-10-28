@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import CompanyLogo from './CompanyLogo';
+import { waLink, trackLead } from '../whatsapp';
 
-const WA_LINK = 'https://wa.me/918072574682';
+const WA_LINK = waLink("Hi CARZ MOTO, I'd like to book a car upgrade.");
 
 function handleWAClick() {
-  if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+  trackLead('Hero');
   window.open(WA_LINK, '_blank', 'noopener,noreferrer');
 }
 
@@ -123,7 +124,7 @@ export default function Hero() {
             style={{ background: 'linear-gradient(135deg, #FFD700, #DAA520)' }}
           >
             <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7" />
-            BOOK YOUR CRUISE
+            BOOK YOUR UPGRADE
           </button>
 
           {/* Secondary Explore */}

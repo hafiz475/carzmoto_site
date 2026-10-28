@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { waLink, trackLead } from '../whatsapp';
 
-const WA_LINK = 'https://wa.me/918072574682';
+const WA_LINK = waLink("Hi CARZ MOTO, I'd like to claim the ₹1999 package offer.");
 
 export default function Offer() {
   const sectionRef = useRef(null);
@@ -69,7 +70,7 @@ export default function Offer() {
             rel="noopener noreferrer"
             className="group flex flex-col sm:flex-row items-center justify-center gap-3 font-rajdhani font-black tracking-wide text-xl sm:text-2xl px-10 py-5 sm:py-6 rounded-full text-carbon-950 transition-all duration-300 hover:scale-110 btn-glow-gold"
             style={{ background: 'linear-gradient(135deg, #FFD700 0%, #DAA520 100%)' }}
-            onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+            onClick={() => trackLead('Offer')}
           >
             Claim Offer on WhatsApp
             <FaWhatsapp className="w-6 h-6 sm:w-8 sm:h-8 group-hover:rotate-12 transition-transform duration-300" />

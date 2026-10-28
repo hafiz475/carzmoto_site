@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import CompanyLogo from './CompanyLogo';
+import { waLink, trackLead } from '../whatsapp';
 
-const WA_LINK = 'https://wa.me/918072574682';
+const WA_LINK = waLink();
 
 const WaIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -74,7 +75,7 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center gap-2 text-carbon-950 font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 hover:scale-105 btn-glow-gold"
           style={{ background: 'linear-gradient(135deg, #FFD700, #B8860B)' }}
-          onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+          onClick={() => trackLead('Navbar')}
         >
           <WaIcon />
           Chat on WhatsApp
@@ -85,6 +86,8 @@ export default function Navbar() {
           className="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-brand-gold/30 hover:bg-brand-gold/10 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           <span className={`hamburger-line block w-5 h-0.5 bg-brand-gold-light rounded-full ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <span className={`hamburger-line block w-5 h-0.5 bg-brand-gold-light rounded-full ${mobileOpen ? 'opacity-0 scale-x-0' : ''}`} />
@@ -92,8 +95,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Dropdown — inert while collapsed so hidden links can't take keyboard focus */}
       <div
+        id="mobile-menu"
+        inert={!mobileOpen}
         className={`md:hidden overflow-hidden transition-all duration-400 ${
           mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
         }`}
@@ -119,7 +124,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="mt-3 flex items-center justify-center gap-2 text-carbon-950 font-bold py-3.5 rounded-full text-sm btn-glow-gold"
             style={{ background: 'linear-gradient(135deg, #FFD700, #B8860B)' }}
-            onClick={() => { setMobileOpen(false); typeof fbq !== 'undefined' && fbq('track', 'Lead'); }}
+            onClick={() => { setMobileOpen(false); trackLead('Mobile menu'); }}
           >
             <WaIcon />
             Chat on WhatsApp

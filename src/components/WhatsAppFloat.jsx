@@ -1,4 +1,6 @@
-const WA_LINK = 'https://wa.me/918072574682';
+import { waLink, trackLead } from '../whatsapp';
+
+const WA_LINK = waLink();
 
 export default function WhatsAppFloat() {
   return (
@@ -24,7 +26,7 @@ export default function WhatsAppFloat() {
         className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full text-white wa-float transition-transform duration-300 hover:scale-110"
         style={{ background: 'linear-gradient(135deg, #25d366, #128c7e)' }}
         aria-label="Chat on WhatsApp"
-        onClick={() => { if (typeof fbq !== 'undefined') fbq('track', 'Lead'); }}
+        onClick={() => trackLead('Floating button')}
       >
         {/* Pulse ring */}
         <span

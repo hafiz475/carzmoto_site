@@ -1,7 +1,15 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import CompanyLogo from './CompanyLogo';
+import { waLink, trackLead } from '../whatsapp';
 
-const WA_LINK = 'https://wa.me/918072574682';
+const WA_LINK = waLink();
+
+const quickLinks = [
+  { label: 'Services', href: '#services' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Reviews', href: '#trust' },
+  { label: 'Contact Us', href: '#footer' },
+];
 
 export default function Footer() {
   return (
@@ -30,10 +38,10 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex gap-4">
               {[
-                { icon: FaFacebookF, url: '#' },
-                { icon: FaInstagram, url: '#' }
+                { icon: FaFacebookF, url: '#', label: 'Facebook' },
+                { icon: FaInstagram, url: '#', label: 'Instagram' }
               ].map((s, idx) => (
-                <a key={idx} href={s.url} className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-carbon-950 transition-colors duration-300 border border-white/10 hover:border-brand-gold-bright hover:bg-brand-gold-bright hover:shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+                <a key={idx} href={s.url} aria-label={s.label}className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-carbon-950 transition-colors duration-300 border border-white/10 hover:border-brand-gold-bright hover:bg-brand-gold-bright hover:shadow-[0_0_15px_rgba(255,215,0,0.4)]">
                   <s.icon className="w-4 h-4" />
                 </a>
               ))}
@@ -44,11 +52,11 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h4 className="text-white font-rajdhani font-bold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              {['Services', 'Gallery', 'Reviews', 'Contact Us'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase()}`} className="text-gray-400 hover:text-brand-gold-bright text-sm transition-colors duration-300 font-light flex items-center gap-2 group">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href}className="text-gray-400 hover:text-brand-gold-bright text-sm transition-colors duration-300 font-light flex items-center gap-2 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-gold-dim group-hover:bg-brand-gold-bright transition-colors" />
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -76,7 +84,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-300 hover:text-brand-gold-bright font-medium transition-colors"
-                  onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+                  onClick={() => trackLead('Footer')}
                 >
                   +91 80725 74682
                 </a>

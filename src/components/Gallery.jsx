@@ -4,6 +4,7 @@ import seatCover from '../assets/seat-cover.png';
 import androidSys from '../assets/android-system.png';
 import ambientLight from '../assets/ambient-lighting.png';
 import speakers from '../assets/speakers.png';
+import { waLink, trackLead } from '../whatsapp';
 
 const galleryItems = [
   { img: gallery1, label: 'Seat Cover Installation', span: 'col-span-2 row-span-2' },
@@ -48,7 +49,7 @@ export default function Gallery() {
           {galleryItems.map((item, i) => (
             <div
               key={i}
-              className={`reveal-scale group relative rounded-2xl overflow-hidden cursor-pointer ${item.span}`}
+              className={`reveal-scale group relative rounded-2xl overflow-hidden ${item.span}`}
               style={{ transitionDelay: `${i * 0.1}s` }}
             >
               <img
@@ -68,21 +69,12 @@ export default function Gallery() {
                 }}
               />
 
-              {/* Label */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="text-white font-rajdhani font-bold text-lg sm:text-xl tracking-wide">{item.label}</p>
+              {/* Label — always visible on phones (no hover), revealed on hover from sm up */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 sm:translate-y-4 sm:group-hover:translate-y-0 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500">
+                <p className="text-white font-rajdhani font-bold text-base sm:text-xl tracking-wide">{item.label}</p>
                 <div className="flex items-center gap-2 mt-1.5">
                   <div className="w-8 h-0.5 rounded-full bg-brand-gold-light" />
                   <span className="text-brand-gold-light text-xs font-semibold tracking-wider">CARZ MOTO</span>
-                </div>
-              </div>
-
-              {/* Corner accent icon */}
-              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                <div className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-brand-gold/40 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-brand-gold-light" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
                 </div>
               </div>
             </div>
@@ -95,16 +87,16 @@ export default function Gallery() {
             Want to see your car here? Book your slot today!
           </p>
           <a
-            href="https://wa.me/918072574682"
+            href={waLink("Hi CARZ MOTO, I'd like to book an installation.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 font-semibold px-8 py-3.5 rounded-full transition-all duration-400 hover:scale-105 group"
             style={{
-              background: 'rgba(232,0,28,0.08)',
-              border: '1px solid rgba(232,0,28,0.3)',
-              color: '#ff2d3d',
+              background: 'rgba(218,165,32,0.05)',
+              border: '1px solid rgba(218,165,32,0.4)',
+              color: '#DAA520',
             }}
-            onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+            onClick={() => trackLead('Gallery')}
           >
             Book Installation
             <svg className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

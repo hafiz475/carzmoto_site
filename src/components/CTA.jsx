@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { waLink, trackLead } from '../whatsapp';
 
-const WA_LINK = 'https://wa.me/918072574682';
+const WA_LINK = waLink("Hi CARZ MOTO, I'd like to reserve a slot for an upgrade.");
 
 export default function CTA() {
   const sectionRef = useRef(null);
@@ -43,7 +44,7 @@ export default function CTA() {
             target="_blank"
             rel="noopener noreferrer"
             className="relative flex items-center gap-4 bg-carbon-950 text-white font-rajdhani font-bold text-xl sm:text-2xl px-10 py-5 sm:py-6 rounded-full overflow-hidden border border-brand-gold/30 hover:border-brand-gold/60 transition-colors"
-            onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+            onClick={() => trackLead('Final CTA')}
           >
             {/* Button internal gradient hover effect */}
             <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500"

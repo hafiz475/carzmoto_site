@@ -4,8 +4,7 @@ import seatCoverImg from '../assets/seat-cover.png';
 import androidImg from '../assets/android-system.png';
 import ambientImg from '../assets/ambient-lighting.png';
 import speakersImg from '../assets/speakers.png';
-
-const WA_LINK = 'https://wa.me/918072574682';
+import { waLink, trackLead } from '../whatsapp';
 
 const services = [
   {
@@ -90,7 +89,7 @@ export default function Services() {
           {services.map((service, i) => (
             <div
               key={service.id}
-              className="reveal-scale group relative rounded-[2rem] overflow-hidden cursor-pointer bg-carbon-950 border border-brand-gold/10 hover:border-brand-gold/40 transition-colors duration-500"
+              className="reveal-scale group relative rounded-[2rem] overflow-hidden bg-carbon-950 border border-brand-gold/10 hover:border-brand-gold/40 transition-colors duration-500"
               style={{ transitionDelay: `${i * 0.1}s` }}
             >
               {/* Card image container */}
@@ -133,11 +132,11 @@ export default function Services() {
                 </div>
 
                 <a
-                  href={WA_LINK}
+                  href={waLink(`Hi CARZ MOTO, I'd like a quote for ${service.title}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-gold-bright transition-colors duration-300 tracking-wide uppercase"
-                  onClick={() => typeof fbq !== 'undefined' && fbq('track', 'Lead')}
+                  onClick={() => trackLead(`Services: ${service.title}`)}
                 >
                   Request Quote
                   <svg className="w-4 h-4 text-brand-gold-light group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
